@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HemoNovo</title>
+<meta name="description" content="HemoNovo LLC is a technical consulting company in Orange County, California, providing design, scientific, quality and regulatory services to medical device companies.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f4f7f9;
+    --text: #2f3236;
+    --muted: #5a6b78;
+    --line: #dde4ea;
+    --accent: #c9302a;
+    --accent-dark: #a82520;
+    --accent-text: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f171e;
+      --bg-soft: #16212a;
+      --text: #e8eef2;
+      --muted: #9aabb8;
+      --line: #26343f;
+      --accent: #ef5b52;
+      --accent-dark: #f47d76;
+      --accent-text: #0f171e;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  header { border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+  .brand svg { height: 40px; width: auto; display: block; }
+  .brand .name { font-family: "Outfit", "Inter", sans-serif; font-weight: 600; font-size: 24px; letter-spacing: 0.06em; text-transform: uppercase; }
+    nav a { color: var(--muted); text-decoration: none; font-weight: 500; margin-left: 24px; }
+  nav a:hover { color: var(--accent); }
+
+  .hero { padding: 96px 0 88px; }
+  .hero h1 {
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+    max-width: 760px;
+  }
+  .hero p { font-size: 20px; color: var(--muted); max-width: 640px; margin: 0 0 32px; }
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--accent-text);
+    padding: 13px 26px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 0;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--accent-dark); }
+
+  .about { background: var(--bg-soft); padding: 80px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .about h2, .contact h2 { font-size: 30px; letter-spacing: -0.01em; margin: 0 0 12px; }
+  .about > .wrap > p { color: var(--muted); max-width: 680px; margin: 0 0 40px; }
+  .cards { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
+  .card { grid-column: span 2; }
+  .card:nth-child(n+4) { grid-column: span 3; }
+  .card { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 26px; }
+  .card h3 { margin: 0 0 8px; font-size: 18px; }
+  .card p { margin: 0; color: var(--muted); font-size: 16px; }
+
+  .contact { padding: 80px 0; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: start; }
+  .contact-info p { color: var(--muted); margin: 0 0 16px; }
+  form { display: grid; gap: 16px; }
+  label { display: grid; gap: 6px; font-weight: 500; font-size: 15px; }
+  input, textarea {
+    font: inherit;
+    font-size: 16px;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 11px 13px;
+    width: 100%;
+  }
+  input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+  textarea { min-height: 150px; resize: vertical; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .hp { position: absolute; left: -5000px; }
+  .status { font-size: 15px; margin: 0; min-height: 1.4em; }
+  .status.ok { color: #1d7a4a; }
+  .status.err { color: #b3261e; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 16px; }
+    nav a { margin-left: 16px; }
+    .hero { padding: 64px 0 56px; }
+    .cards { grid-template-columns: 1fr; }
+    .card, .card:nth-child(n+4) { grid-column: auto; }
+    .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="HemoNovo home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="316 80 334 450" aria-hidden="true" height="40">
+<path fill="#db3831" fill-rule="evenodd" d="M 472.84 96.77 C 475.97 92.21 480.75 83.97 486.43 88.86 Q 489.49 91.48 492.52 95.73 C 520.73 135.19 544.10 167.84 567.91 200.04 Q 583.25 220.78 599.64 245.86 Q 612.42 265.41 618.68 276.56 Q 638.85 312.50 641.45 354.23 C 644.64 405.52 621.16 454.80 581.76 486.90 C 553.10 510.24 519.24 522.18 482.26 521.91 C 402.09 521.31 336.17 461.38 325.74 382.65 C 322.49 358.11 325.34 332.23 332.96 308.71 C 338.12 292.79 345.69 277.74 355.57 261.63 Q 372.99 233.25 392.90 206.15 Q 434.81 149.12 468.68 102.77 Q 469.49 101.66 472.84 96.77 Z M 517.23 457.02 A 1.12 1.12 0.0 0 0 517.09 455.02 Q 514.63 453.99 508.34 452.48 C 488.24 447.65 470.68 436.83 457.01 421.47 Q 455.34 419.59 454.55 418.07 A 1.17 1.17 0.0 0 1 455.03 416.50 Q 456.64 415.62 458.34 416.65 Q 465.03 420.69 472.23 424.99 C 481.85 430.72 488.72 432.97 499.52 433.05 Q 510.40 433.14 513.00 432.71 Q 536.53 428.87 553.98 412.23 Q 561.37 405.19 564.47 396.71 C 572.73 374.15 569.74 349.42 560.13 327.62 Q 555.58 317.31 551.77 310.97 Q 527.96 271.38 499.19 232.41 C 495.93 228.00 492.92 222.98 490.05 219.23 C 485.58 213.39 479.93 213.95 475.91 219.92 C 468.79 230.52 460.73 240.30 454.31 249.94 Q 434.86 279.15 423.09 297.59 C 412.23 314.62 403.30 331.14 399.05 350.47 C 390.70 388.46 408.45 424.94 441.42 444.57 C 463.52 457.72 488.14 462.82 513.09 458.69 Q 514.97 458.38 517.23 457.02 Z"/>
+<ellipse fill="#db3831" cx="0" cy="0" rx="21.41" ry="21.17" transform="translate(458.79,369.86) rotate(-42.4)"/>
+</svg>
+      <span class="name">HemoNovo</span>
+    </a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <h1>Engineering, science and regulatory support for medical device companies.</h1>
+      <p>HemoNovo is a technical consulting company. We help medical device and diagnostics teams design their instruments, develop the science behind them, and bring them through quality and regulatory requirements.</p>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <h2>About HemoNovo</h2>
+      <p>Based in Orange County, California, HemoNovo works with medical device companies from early concept through to market, as an extra pair of hands or as the team that gets a project done.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Design and engineering</h3>
+          <p>Instrument and system design, including optics, mechanics and fluidics, from concept to working prototype.</p>
+        </div>
+        <div class="card">
+          <h3>Electronics and software</h3>
+          <p>Control electronics, firmware, and instrument control software and apps.</p>
+        </div>
+        <div class="card">
+          <h3>Scientific support</h3>
+          <p>Reagent, stain and assay development, bench protocols and lab testing in our own lab.</p>
+        </div>
+        <div class="card">
+          <h3>Quality support</h3>
+          <p>Quality systems, design controls and design history files that hold up to audits.</p>
+        </div>
+        <div class="card">
+          <h3>Regulatory support</h3>
+          <p>Regulatory planning, standards and submission support for US and international markets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <h2>Contact us</h2>
+        <p>Have a project or a question? Send us a message and we'll get back to you.</p>
+        <p>Irvine, California</p>
+      </div>
+
+      <form id="contact-form" action="https://formspree.io/f/xdeejplq" method="POST">
+        <div class="row">
+          <label>Name
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label>Email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+        </div>
+        <label><span>Company <span style="color:var(--muted);font-weight:400">(optional)</span></span>
+          <input type="text" name="company" autocomplete="organization">
+        </label>
+        <label>Message
+          <textarea name="message" required></textarea>
+        </label>
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="_subject" value="New message from hemonovo.com">
+        <div>
+          <button class="btn" type="submit">Send message</button>
+        </div>
+        <p class="status" id="form-status" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="year">2026</span> HemoNovo LLC</span>
+    <span>Irvine, California</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('contact-form');
+  const statusEl = document.getElementById('form-status');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusEl.className = 'status';
+    statusEl.textContent = 'Sending…';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.reset();
+        statusEl.className = 'status ok';
+        statusEl.textContent = 'Thanks! Your message was sent.';
+      } else {
+        // Formspree wants a spam check: send the form the normal way instead
+        form.submit();
+      }
+    } catch (err) {
+      form.submit();
+    }
+  });
+</script>
+</body>
+</html>
