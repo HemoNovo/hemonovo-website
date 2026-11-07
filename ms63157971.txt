@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "hemonovo.com",
+  "Id": "0b3b2cae-48b8-4700-b537-1ca6f47a5d09"
+}
